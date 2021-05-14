@@ -1,3 +1,5 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculator {
 
@@ -16,8 +18,21 @@ public class Calculator {
 	
 	public static String[] splitStr(String str)
 	{
+		if(str.startsWith("//"))
+		{
+			Pattern pattern = Pattern.compile("//(.)\n(.*)");
+		     Matcher matcher = pattern.matcher(str);
+		     matcher.matches();
+		     String patternstr=matcher.group(1);
+		     String txtstr=matcher.group(2);
+		     String sptstr[]=txtstr.split(Pattern.quote(patternstr));
+		     return sptstr;
+			
+		}
+		else
+		{	
 		String[] regstr=str.split(",|\n");
 		return regstr;
-		
+		}
 	}
 }
