@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
@@ -34,14 +36,27 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void shouldAcceptcustomDelinimiterSyntex()
+	public void calcOncustomDelinimiterSyntex()
 	{
 		assertEquals(3,Calculator.add("//;\n1;2"));
 	}
 	
 	@Test
-	public void shouldAcceptcustomDelinimiterspecialcharalso()
+	public void calcOncustomDelinimiterspecialcharalso()
 	{
 		assertEquals(3,Calculator.add("//.\n1.2"));
+	}
+	
+	@Test
+	public void shouldAcceptnagativeNumbers()
+	{
+		try {
+		Calculator.add("-1,-2,3");
+		fail("Exception Expected");
+		}
+		catch(RuntimeException ex)
+		{
+			assertEquals("Nagatives not allowed: -1,-2",ex.getMessage());
+		}
 	}
 }

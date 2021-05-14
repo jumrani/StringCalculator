@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,11 +10,17 @@ public class Calculator {
 		if(txt.isEmpty()) return 0;
 		else 
 		{
+			List<String> nglist = new ArrayList<String>();
 			int res=0;
 			String str[]=splitStr(txt);
 			for(int i=0;i<str.length;i++)
-			res+=Integer.parseInt(str[i]);
-			return res;
+			{
+				if(Integer.parseInt(str[i])> 0 ) res+=Integer.parseInt(str[i]);
+				else if(Integer.parseInt(str[i])< 0) nglist.add(str[i]);
+			}
+			if(nglist.size()>0)
+				throw new RuntimeException("Nagatives not allowed: "+ String.join(",", nglist));
+				return res;
 		}
 	}
 	
