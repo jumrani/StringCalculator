@@ -48,7 +48,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void shouldAcceptnagativeNumbers()
+	public void calcOnnagativeNumbers()
 	{
 		try {
 		Calculator.add("-1,-2,3");
@@ -58,5 +58,11 @@ public class CalculatorTest {
 		{
 			assertEquals("Nagatives not allowed: -1,-2",ex.getMessage());
 		}
+	}
+	
+	@Test
+	public void calcOnnumberbiggerthan1000()
+	{
+		assertEquals(2,Calculator.add("2,1001"));
 	}
 }

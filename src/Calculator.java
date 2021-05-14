@@ -15,7 +15,7 @@ public class Calculator {
 			String str[]=splitStr(txt);
 			for(int i=0;i<str.length;i++)
 			{
-				if(Integer.parseInt(str[i])> 0 ) res+=Integer.parseInt(str[i]);
+				if(Integer.parseInt(str[i])> 0  && Integer.parseInt(str[i])< 1000) res+=Integer.parseInt(str[i]);
 				else if(Integer.parseInt(str[i])< 0) nglist.add(str[i]);
 			}
 			if(nglist.size()>0)
